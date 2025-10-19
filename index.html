@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Holly!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --primary-color: #ff6b8b;
+      --secondary-color: #a78bfa;
+      --accent-color: #f9cb8f;
+      --light-color: #fff9f9;
+      --dark-color: #333;
+      --holly-pink: #ffb6c1;
+      --holly-blue: #add8e6;
+    }
+
+    body {
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      overflow-x: hidden;
+    }
+
+    /* Sparkle Container */
+    #sparkle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+      opacity: 0;
+      animation: sparkleFloat 8s linear infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      background: linear-gradient(135deg, var(--holly-pink), var(--holly-blue));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-btn {
+      padding: 0.8rem 2rem;
+      background-color: white;
+      color: var(--primary-color);
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-weight: 600;
+      z-index: 5;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Gallery */
+    .gallery {
+      background-color: #f9f7fe;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      height: 250px;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Music Section */
+    .music-section {
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+      text-align: center;
+    }
+
+    .music-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .album-player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s;
+    }
+
+    .album-player.revealed {
+      transform: scale(1.05);
+    }
+
+    .album-cover {
+      width: 250px;
+      height: 250px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .album-cover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .album-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .album-cover:hover .play-overlay {
+      opacity: 1;
+    }
+
+    .play-icon {
+      font-size: 3rem;
+      color: white;
+    }
+
+    .spotify-player {
+      width: 100%;
+      height: 80px;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+
+    .reveal-btn {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .reveal-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .real-song {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s;
+      width: 100%;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--secondary-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-date {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Relationship Timer Section */
+    .timer-section {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timer-title {
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      font-family: 'Dancing Script', cursive;
+      margin-bottom: 1rem;
+    }
+
+    .timer-subtitle {
+      font-size: 1.2rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .timer-display {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .timer-unit {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 1.5rem;
+      min-width: 120px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .timer-unit:hover {
+      transform: translateY(-5px);
+    }
+
+    .timer-value {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .timer-label {
+      font-size: 1rem;
+      color: var(--dark-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timer-message {
+      font-size: 1.2rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      margin-top: 2rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .timer-hearts {
+      font-size: 2rem;
+      margin-top: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Flower Garden Section */
+    .flower-garden {
+      background-color: #e8f5e9;
+      text-align: center;
+    }
+
+    .garden-container {
+      position: relative;
+      height: 500px;
+      margin: 2rem auto;
+      max-width: 1000px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .garden-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/Users/sehej/IdeaProjects/untitled2/6cdb19e4-4762-41ce-a574-6317d2d1e7f6.webp');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      animation: float 8s infinite ease-in-out;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .bubble:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .bubble-content {
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    .garden-btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .garden-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* About Holly Section */
+    .about-holly {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+    }
+
+    .holly-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .holly-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    .holly-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+    }
+
+    .holly-card ul {
+      list-style: none;
+      text-align: left;
+    }
+
+    .holly-card li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .holly-card li:before {
+      content: "❤";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+
+    /* Secret Section */
+    .secret-section {
+      background: linear-gradient(to right, #ffd6e7, #c2e9fb);
+      text-align: center;
+    }
+
+    .secret-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .passcode-input {
+      width: 100%;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #ff4d7a;
+    }
+
+    .secret-message {
+      display: none;
+      margin-top: 2rem;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .heart {
+      color: var(--primary-color);
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .album-cover {
+        width: 200px;
+        height: 200px;
+      }
+
+      .garden-container {
+        height: 400px;
+      }
+
+      .bubble {
+        padding: 10px;
+      }
+
+      .bubble-content {
+        font-size: 12px;
+      }
+
+      .timer-display {
+        gap: 1rem;
+      }
+
+      .timer-unit {
+        min-width: 100px;
+        padding: 1rem;
+      }
+
+      .timer-value {
+        font-size: 2.5rem;
+      }
+
+      .timer-label {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Sparkle Container -->
+<div id="sparkle-container"></div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">For My Holly</div>
+    <div class="nav-links">
+      <a href="#about">About Holly</a>
+      <a href="#gallery">Our Memories</a>
+      <a href="#music">Our Song</a>
+      <a href="#timeline">Our Journey</a>
+      <a href="#timer">Our Time</a>
+      <a href="#garden">Her Garden</a>
+      <a href="#secret">Secret</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Happy Birthday, My Beautiful Holly!</h1>
+  <p>To the most amazing girl in the world - may your day be as special as you are to me.</p>
+  <button class="hero-btn">Discover Your Surprise</button>
+</section>
+
+<!-- About Holly Section -->
+<section id="about" class="about-holly">
+  <h2 class="section-title">All About Holly</h2>
+  <div class="holly-container">
+    <div class="holly-card">
+      <h3>Holly Grace Waddell</h3>
+      <ul>
+        <li>Birthday: 4th November 2005</li>
+        <li>Ginger hair, beautiful blue eyes</li>
+        <li>5'5" Australian beauty</li>
+        <li>Studies Marketing & Korean at UQ</li>
+        <li>Works at Aldi</li>
+        <li>Proud dog mom to Harold</li>
+      </ul>
+    </div>
+    <div class="holly-card">
+      <h3>Favorite Things</h3>
+      <ul>
+        <li>Color: Pink</li>
+        <li>Food: Chips (fries)</li>
+        <li>Flowers: Hydrangeas</li>
+        <li>Drink: Coffee</li>
+        <li>Movie: Pride & Prejudice (2005)</li>
+        <li>TV Show: Gilmore Girls</li>
+        <li>Song: Steam by Shelly</li>
+        <li>Artists: Laufey, Aleksiah, Sam Phillips</li>
+        <li>Season: Spring</li>
+      </ul>
+    </div>
+    <div class="holly-card">
+      <h3>Things She Loves</h3>
+      <ul>
+        <li>Dance & Exercise</li>
+        <li>The beach</li>
+        <li>Cuddles & Kisses</li>
+        <li>Wearing my hoodies</li>
+        <li>Listening to music</li>
+        <li>Hiking</li>
+        <li>Korea & Traveling</li>
+        <li>Hello Kitty</li>
+        <li>Journaling</li>
+        <li>FaceTime with me</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="gallery">
+  <h2 class="section-title">Our Beautiful Memories</h2>
+  <div class="gallery-container">
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /0F0B2FC6-5B3F-4BC7-9722-E7A02937A1C4.JPG" alt="Memory 1">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /D752B5DE-DC9B-414F-9C1C-C49E9EF28214.JPG" alt="Memory 2">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_0245.JPG" alt="Memory 3">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_0317.JPG" alt="Memory 4">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_3102.JPG" alt="Memory 5">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_3294.jpg" alt="Memory 6-">
+    </div>
+
+
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_1106.jpeg" alt="Memory 7-">
+    </div>
+
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_3536.JPG" alt="Memory 8-">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_0365.jpeg" alt="Memory 9">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_3770.JPG" alt="Memory 10">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_3943.JPG" alt="Memory 11">
+    </div>
+    <div class="gallery-item">
+      <img src="/Users/sehej/IdeaProjects/untitled2/gallery images /IMG_9437.JPG" alt="Memory 12">
+    </div>
+  </div>
+</section>
+
+<!-- Music Section -->
+<section id="music" class="music-section">
+  <h2 class="section-title">Our Song</h2>
+  <div class="music-container">
+    <div class="album-player" id="music-player">
+      <h3 id="song-title">Back to Friends - Somber</h3>
+      <p id="song-description">Our favorite song that reminds me of you</p>
+
+      <div class="album-cover" id="fake-album">
+        <img src="/Users/sehej/IdeaProjects/Hollys-birthdayReal/album covers /Back_to_Friends__by_Sombr.jpeg" alt="Back to Friends Album Cover">
+        <div class="play-overlay">
+        </div>
+      </div>
+
+      <iframe class="spotify-player" src="https://open.spotify.com/embed/track/0FTmksd2dxiE5e3rWyJXs6?utm_source=generator" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+      <button class="reveal-btn" id="reveal-btn">Wait... this isn't right. Click to reveal our real song!</button>
+
+      <div class="real-song" id="real-song">
+        <h3>Best Part - Daniel Caesar Feat. H.E.R.</h3>
+        <p>Our <em>actual</em> favorite song that always makes me think of you</p>
+
+        <div class="album-cover" id="real-album">
+          <img src="/Users/sehej/IdeaProjects/Hollys-birthdayReal/album covers /2c60d9c8-128a-56cf-b285-d993bd1c64f3.jpg" alt="Best Part Album Cover">
+          <div class="play-overlay">
+          </div>
+        </div>
+
+        <iframe class="spotify-player" src="https://open.spotify.com/embed/track/1RMJOxR6GRPsBHL8qeC2ux?utm_source=generator" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline Section -->
+<section id="timeline" class="timeline-section">
+  <h2 class="section-title">Our Journey</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">June 27th, 2025</div>
+        <p>The day we first met outside Daiso. I knew from that moment you were special.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">June 28th, 2025</div>
+        <p>Our first hang out - the second night at CU. I was already completely captivated by you.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">July 18th, 2025</div>
+        <p>Our first kiss - you said it was terrible but it was perfect to me.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">August 17th, 2025</div>
+        <p>The day we officially said "I love you" to each other. The most meaningful words I've ever spoken.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">August 23rd, 2025</div>
+        <p>The day we officially became a couple - the best day of my life.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">Today</div>
+        <p>Celebrating your birthday and looking forward to many more memories together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Relationship Timer Section -->
+<section id="timer" class="timer-section">
+  <h2 class="section-title">Our Time Together</h2>
+  <div class="timer-container">
+    <div class="timer-title">Every Moment With You Is Precious</div>
+    <div class="timer-subtitle">We've been together since July 23rd, 2025</div>
+
+    <div class="timer-display">
+      <div class="timer-unit">
+        <div class="timer-value" id="years">0</div>
+        <div class="timer-label">Years</div>
+      </div>
+      <div class="timer-unit">
+        <div class="timer-value" id="months">0</div>
+        <div class="timer-label">Months</div>
+      </div>
+      <div class="timer-unit">
+        <div class="timer-value" id="days">0</div>
+        <div class="timer-label">Days</div>
+      </div>
+      <div class="timer-unit">
+        <div class="timer-value" id="hours">0</div>
+        <div class="timer-label">Hours</div>
+      </div>
+      <div class="timer-unit">
+        <div class="timer-value" id="minutes">0</div>
+        <div class="timer-label">Minutes</div>
+      </div>
+      <div class="timer-unit">
+        <div class="timer-value" id="seconds">0</div>
+        <div class="timer-label">Seconds</div>
+      </div>
+    </div>
+
+    <div class="timer-message">
+      Every second with you is a blessing. I cherish our time together and look forward to creating many more beautiful memories with you.
+    </div>
+
+    <div class="timer-hearts">
+      ❤️ ❤️ ❤️
+    </div>
+  </div>
+</section>
+
+<!-- Flower Garden Section -->
+<section id="garden" class="flower-garden">
+  <h2 class="section-title">Holly's Hydrangea Garden</h2>
+  <p>Your favorite flowers with all the things I love about you</p>
+  <div class="garden-container" id="garden-container">
+    <div class="garden-background"></div>
+    <!-- Bubbles will be generated here with JavaScript -->
+  </div>
+  <button class="garden-btn" id="refresh-bubbles">Refresh Bubbles</button>
+</section>
+
+<!-- Secret Section -->
+<section id="secret" class="secret-section">
+  <h2 class="section-title">Secret Message</h2>
+  <div class="secret-container">
+    <p>Enter our special code to reveal a secret message</p>
+    <p><small>(Hint: Where did we first meet?)</small></p>
+    <input type="text" class="passcode-input" placeholder="Enter passcode" id="passcode">
+    <button class="submit-btn" id="submit-code">Reveal Message</button>
+    <div class="secret-message" id="secret-message">
+      <p>My dearest Holly,</p>
+      <p>From the moment I met you outside Daiso, I knew you were someone special. Your ginger hair, those beautiful blue eyes, and that incredible smile captured my heart instantly.</p>
+      <p>I love the way you constantly compliment me, how you write about me, and how you always want to hold my hand. I love your cute Instagram reels, your laugh, and how we share the same goals and aspirations.</p>
+      <p>You are the most amazing person I've ever known. Every day with you is a gift, and I'm so grateful to have you in my life. I love you more than words can express.</p>
+      <p>Happy birthday, my love! Here's to many more birthdays together.</p>
+      <p>Forever yours,</p>
+      <p>Sehej</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>Made with <span class="heart">❤</span> for the most wonderful Holly Grace Waddell</p>
+  <p>Happy 19th Birthday, my love!</p>
+</footer>
+
+<script>
+  // Sparkle Animation
+  function createSparkles() {
+    const container = document.getElementById('sparkle-container');
+    const sparkleCount = 50;
+
+    for (let i = 0; i < sparkleCount; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+
+      // Random position
+      const left = Math.random() * 100;
+      sparkle.style.left = `${left}%`;
+
+      // Random delay
+      const delay = Math.random() * 15;
+      sparkle.style.animationDelay = `${delay}s`;
+
+      // Random size
+      const size = Math.random() * 4 + 2;
+      sparkle.style.width = `${size}px`;
+      sparkle.style.height = `${size}px`;
+
+      // Random color (mostly white with some pink/purple)
+      const colors = ['#ffffff', '#ffb6c1', '#e0c3fc', '#ffffff', '#ffffff'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      sparkle.style.backgroundColor = color;
+      sparkle.style.boxShadow = `0 0 10px 2px ${color}`;
+
+      container.appendChild(sparkle);
+    }
+  }
+
+  // Relationship Timer
+  function updateTimer() {
+    const startDate = new Date('July 23, 2025 00:00:00').getTime();
+    const now = new Date().getTime();
+
+    // If the start date is in the future, show a waiting message
+    if (now < startDate) {
+      document.getElementById('years').textContent = '0';
+      document.getElementById('months').textContent = '0';
+      document.getElementById('days').textContent = '0';
+      document.getElementById('hours').textContent = '0';
+      document.getElementById('minutes').textContent = '0';
+      document.getElementById('seconds').textContent = '0';
+      return;
+    }
+
+    const timeDifference = now - startDate;
+
+    // Calculate years
+    const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
+
+    // Calculate months
+    const months = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+
+    // Calculate days
+    const days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+
+    // Calculate hours
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    // Calculate minutes
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    // Calculate seconds
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    // Update the display
+    document.getElementById('years').textContent = years;
+    document.getElementById('months').textContent = months;
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+
+  // Song Reveal Functionality
+  const revealBtn = document.getElementById('reveal-btn');
+  const realSong = document.getElementById('real-song');
+  const musicPlayer = document.getElementById('music-player');
+  const fakeAlbum = document.getElementById('fake-album');
+  const realAlbum = document.getElementById('real-album');
+
+  revealBtn.addEventListener('click', function() {
+    realSong.style.display = 'block';
+    musicPlayer.classList.add('revealed');
+    revealBtn.style.display = 'none';
+
+    // Stop the fake song
+    const fakeAlbumPlayIcon = fakeAlbum.querySelector('.play-icon');
+    fakeAlbumPlayIcon.classList.remove('fa-pause');
+    fakeAlbumPlayIcon.classList.add('fa-play');
+
+    // Start the real song
+    const realAlbumPlayIcon = realAlbum.querySelector('.play-icon');
+    realAlbumPlayIcon.classList.remove('fa-play');
+    realAlbumPlayIcon.classList.add('fa-pause');
+
+    // Create a simple confetti effect
+    createConfetti();
+  });
+
+  // Album Cover Click Functionality
+  fakeAlbum.addEventListener('click', function() {
+    const albumIcon = fakeAlbum.querySelector('.play-icon');
+
+    if (albumIcon.classList.contains('fa-play')) {
+      albumIcon.classList.remove('fa-play');
+      albumIcon.classList.add('fa-pause');
+    } else {
+      albumIcon.classList.remove('fa-pause');
+      albumIcon.classList.add('fa-play');
+    }
+  });
+
+  realAlbum.addEventListener('click', function() {
+    const albumIcon = realAlbum.querySelector('.play-icon');
+
+    if (albumIcon.classList.contains('fa-play')) {
+      albumIcon.classList.remove('fa-play');
+      albumIcon.classList.add('fa-pause');
+    } else {
+      albumIcon.classList.remove('fa-pause');
+      albumIcon.classList.add('fa-play');
+    }
+  });
+
+  // Compliments about Holly
+  const compliments = [
+    "Your pretty smile",
+    "The way you constantly compliment me",
+    "Your gorgeous blue eyes",
+    "10/10 collarbone",
+    "9/10 nostrils",
+    "Your love for Harold",
+    "Your taste in music",
+    "The way you write about me",
+    "your giggles",
+    "How we share the same goals",
+    "How smart you are",
+    "Your kindness to everyone",
+    "The way you kiss me",
+    "How you always want to hold my hand",
+    "Your Instagram reels",
+    "How you want to travel with me",
+    "How driven you are",
+    "BACKSHOTS",
+    "Your beautiful curly hair",
+    "How you wear my hoodies",
+    "Your love for romantic shows",
+    "How you love writing letters for me",
+    "Your dedication to the relationship",
+    "Good Morning texts",
+    "How you are flying across the world for me ",
+    "How you love your friends",
+    "Your love for cuddles",
+    "Your adventurous spirit",
+    "Your love for hiking",
+    "How you always make time for me"
+  ];
+
+  // Create bubbles with compliments
+  function createBubbles() {
+    const gardenContainer = document.getElementById('garden-container');
+
+    // Clear existing bubbles
+    const existingBubbles = document.querySelectorAll('.bubble');
+    existingBubbles.forEach(bubble => bubble.remove());
+
+    // Create 10-15 bubbles
+    const bubbleCount = Math.floor(Math.random() * 6) + 15; // 10-15 bubbles
+
+    for (let i = 0; i < bubbleCount; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+
+      // Random position
+      const left = Math.random() * 80 + 10; // 10% to 90%
+      const top = Math.random() * 70 + 15; // 15% to 85%
+
+      bubble.style.left = `${left}%`;
+      bubble.style.top = `${top}%`;
+
+      // Random size
+      const size = Math.random() * 70 + 90; // 70px to 150px
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+
+      // Random animation delay and duration
+      const delay = Math.random() * 5;
+      const duration = Math.random() * 5 + 8; // 8-13 seconds
+      bubble.style.animationDelay = `${delay}s`;
+      bubble.style.animationDuration = `${duration}s`;
+
+      // Random compliment
+      const randomIndex = Math.floor(Math.random() * compliments.length);
+      const compliment = compliments[randomIndex];
+
+      const content = document.createElement('div');
+      content.classList.add('bubble-content');
+      content.innerHTML = `<span class="heart">❤</span> ${compliment}`;
+
+      bubble.appendChild(content);
+      gardenContainer.appendChild(bubble);
+    }
+  }
+
+  // Refresh bubbles button
+  const refreshBtn = document.getElementById('refresh-bubbles');
+  refreshBtn.addEventListener('click', createBubbles);
+
+  // Secret Passcode Functionality
+  const submitBtn = document.getElementById('submit-code');
+  const secretMessage = document.getElementById('secret-message');
+
+  submitBtn.addEventListener('click', function() {
+    const passcode = document.getElementById('passcode').value.toLowerCase();
+
+    // Check if the passcode is correct (daiso)
+    if (passcode === 'daiso') {
+      secretMessage.style.display = 'block';
+      // Create a simple confetti effect
+      createConfetti();
+    } else {
+      alert('Try again! Hint: Where did we first meet?');
+    }
+  });
+
+  // Simple confetti effect
+  function createConfetti() {
+    const colors = ['#ff6b8b', '#a78bfa', '#f9cb8f', '#4caf50', '#2196f3'];
+    const container = document.querySelector('.secret-container');
+
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'absolute';
+      confetti.style.width = '10px';
+      confetti.style.height = '10px';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.borderRadius = '50%';
+      confetti.style.left = Math.random() * 100 + '%';
+      confetti.style.top = '-20px';
+      confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+
+      container.appendChild(confetti);
+
+      // Remove confetti after animation
+      setTimeout(() => {
+        confetti.remove();
+      }, 5000);
+    }
+
+    // Add the fall animation
+    const style = document.createElement('style');
+    style.textContent = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(500px) rotate(${Math.random() * 360}deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+    document.head.appendChild(style);
+  }
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Initialize sparkles and bubbles when page loads
+  window.addEventListener('load', function() {
+    createSparkles();
+    createBubbles();
+    updateTimer(); // Initialize the timer
+    setInterval(updateTimer, 1000); // Update the timer every second
+  });
+</script>
+</body>
+</html>
