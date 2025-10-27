@@ -333,6 +333,7 @@
       position: relative;
       max-width: 800px;
       margin: 0 auto;
+      padding-bottom: 200px; /* 👈 add this */
     }
 
     .timeline::after {
@@ -341,7 +342,7 @@
       width: 6px;
       background-color: var(--secondary-color);
       top: 0;
-      bottom: 0;
+      bottom: -100px; /* 👈 extends the line lower */
       left: 50%;
       margin-left: -3px;
     }
@@ -921,21 +922,17 @@
         <p>The day we officially said "I love you" to each other. I just wanted to get past the I like you so so much, i had already fallen for you.</p>
       </div>
     </div>
-    </div>
     <div class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-date">Today</div>
         <p>Celebrating your birthday and looking forward to many more memories together.</p>
       </div>
     </div>
-  </div>
-  </div>
   <div class="timeline-item">
     <div class="timeline-content">
       <div class="timeline-date">Future</div>
       <p>Cant wait to have the best time in Canada together</p>
     </div>
-  </div>
   </div>
 </section>
 
