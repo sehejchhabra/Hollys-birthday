@@ -51,6 +51,17 @@
       opacity: 0;
       animation: sparkleFloat 8s linear infinite;
     }
+    /* stop any floating decoration from stealing clicks */
+    #sparkle-container,
+    .sparkle {
+      pointer-events: none;
+    }
+
+    /* keep the secret UI above nearby elements */
+    .secret-container { position: relative; z-index: 20; }
+    .passcode-input,
+    .submit-btn { position: relative; z-index: 21; }
+    .envelope-wrapper { position: relative; z-index: 19; } /* sits just under input/button */
 
     @keyframes sparkleFloat {
       0% {
@@ -213,6 +224,7 @@
     }
 
     /* Music Section */
+
     .music-section {
       background: linear-gradient(to right, #e0c3fc, #8ec5fc);
       text-align: center;
@@ -277,6 +289,7 @@
       align-items: center;
       opacity: 0;
       transition: opacity 0.3s;
+
     }
 
     .album-cover:hover .play-overlay {
@@ -669,6 +682,7 @@
       margin: 2rem 0 0;
     }
 
+
     .envelope {
       /* theme colors – tweak if you want */
       --env-shell: #fbe1ea;   /* flap */
@@ -720,8 +734,6 @@
       bottom: 14px;
       transform: translate(-50%, 20%);
       width: 86%;
-      max-height: 85%;
-      overflow: auto;            /* scroll if super long */
       background: var(--paper-bg);
       color: var(--paper-ink);
       border-radius: 12px;
@@ -735,6 +747,25 @@
       transform: translate(-50%, -88%); /* rises out */
       opacity: 1;
     }
+    /* === Long-page (non-freezing) reveal === */
+    .letter.longpage{
+      position: static;
+      left: auto; bottom: auto;
+      transform: none !important;
+      opacity: 1;
+
+      /* keep it exactly as wide as the container */
+      width: 100%;
+      max-width: 800px;   /* 👈 same as .secret-container */
+      margin: 2rem auto;  /* 👈 perfect centering */
+
+      background: #ffffff;
+      box-shadow: 0 15px 40px rgba(0,0,0,.12);
+      border-radius: 12px;
+    }
+
+    /* let content extend beyond the envelope */
+    .secret-section { overflow: visible; }
 
     .letter-inner p {
       margin: 0 0 1.1rem 0;
@@ -745,6 +776,35 @@
     /* widen secret container so inputs/buttons match the envelope width */
     .secret-container { max-width: 800px; width: 90%; margin: 0 auto; }
 
+    /* ===== Fullscreen Letter and Backdrop ===== */
+    .letter-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+    }
+    .letter-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .letter.fullscreen {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(900px, 92vw);
+      max-height: none;
+      z-index: 1000;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
 
     /* Footer */
     footer {
@@ -1129,7 +1189,8 @@
         </div>
       </div>
     </div>
-    <section>
+</section>
+<div class="letter-backdrop" id="letter-backdrop"></div>
 
 <!-- Footer -->
 <footer>
@@ -1351,28 +1412,44 @@
   refreshBtn.addEventListener('click', createBubbles);
 
   // Secret Passcode Functionality — envelope
+  // Secret Passcode Functionality — fullscreen envelope animation
+
   const submitBtn = document.getElementById('submit-code');
   const envelope = document.getElementById('envelope');
   const letter = document.getElementById('letter');
+  // add this:
+  const envelopeWrapper = document.querySelector('.envelope-wrapper');
+  const backdrop = document.getElementById('letter-backdrop');
 
   submitBtn.addEventListener('click', function () {
     const passcode = document.getElementById('passcode').value.toLowerCase();
-
     if (passcode === 'daiso') {
-      // open flap
       envelope.classList.add('open');
-      // slide out letter shortly after
       setTimeout(() => {
-        letter.classList.add('show');
-        letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Move the letter OUT of the envelope so it becomes a normal block element
+        envelopeWrapper.insertAdjacentElement('afterend', letter);
+        letter.classList.add('show', 'longpage'); // shows it as a long white section
       }, 350);
-
       createConfetti();
     } else {
       alert('Try again! Hint: Where did we first meet?');
     }
   });
 
+  // Click backdrop to close the letter
+  backdrop.addEventListener('click', () => {
+    letter.classList.remove('show', 'fullscreen');
+    backdrop.classList.remove('show');
+    document.body.classList.remove('no-scroll');
+    // Also close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        letter.classList.remove('show', 'fullscreen');
+        backdrop.classList.remove('show');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  });
   // Simple confetti effect
   function createConfetti() {
     const colors = ['#ff6b8b', '#a78bfa', '#f9cb8f', '#4caf50', '#2196f3'];
