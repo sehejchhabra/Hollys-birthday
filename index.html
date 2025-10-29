@@ -634,17 +634,34 @@
       background-color: #ff4d7a;
     }
 
+    .secret-container {
+      max-width: 800px; /* wider container */
+      width: 90%;       /* takes most of the page width */
+      margin: 0 auto;
+    }
+
     .secret-message {
       display: none;
       margin-top: 2rem;
-      padding: 2rem;
-      background: #f8f9fa;
-      border-radius: 10px;
-      font-size: 1.2rem;
+      padding: 3rem; /* more padding for that "letter" feel */
+      background: #ffffff;
+      border-radius: 15px;
+      font-size: 1.1rem;
       text-align: left;
-      line-height: 1.6;
+      line-height: 1.8; /* more readable spacing */
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      max-width: 100%;
+      width: 100%;
+      min-height: 600px; /* makes it longer automatically */
+      transition: all 0.4s ease;
     }
-
+    .secret-message {
+      background: #fffdf8; /* warm ivory tone */
+      border: 2px solid #f5c2d0; /* light pink border */
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      line-height: 2;
+    }
     /* Footer */
     footer {
       background-color: var(--dark-color);
@@ -934,7 +951,7 @@
       <p>Cant wait to have the best time in Canada together</p>
     </div>
   </div>
-
+  </div>
 </section>
 
 <!-- Relationship Timer Section -->
