@@ -1350,17 +1350,23 @@
   const refreshBtn = document.getElementById('refresh-bubbles');
   refreshBtn.addEventListener('click', createBubbles);
 
-  // Secret Passcode Functionality
+  // Secret Passcode Functionality — envelope
   const submitBtn = document.getElementById('submit-code');
-  const secretMessage = document.getElementById('secret-message');
+  const envelope = document.getElementById('envelope');
+  const letter = document.getElementById('letter');
 
-  submitBtn.addEventListener('click', function() {
+  submitBtn.addEventListener('click', function () {
     const passcode = document.getElementById('passcode').value.toLowerCase();
 
-    // Check if the passcode is correct (daiso)
     if (passcode === 'daiso') {
-      secretMessage.style.display = 'block';
-      // Create a simple confetti effect
+      // open flap
+      envelope.classList.add('open');
+      // slide out letter shortly after
+      setTimeout(() => {
+        letter.classList.add('show');
+        letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 350);
+
       createConfetti();
     } else {
       alert('Try again! Hint: Where did we first meet?');
