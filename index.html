@@ -800,7 +800,9 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       background: linear-gradient(to bottom, #c8e6c9, #e8f5e9);
     }
-
+    /* make sure the garden (and its button) sits above later sections/overlays */
+    .flower-garden { position: relative; z-index: 50; }
+    .garden-btn    { position: relative; z-index: 60; }
     .garden-background {
       position: absolute;
       top: 0;
