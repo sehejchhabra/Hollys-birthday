@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday, Holly!</title>
+
+  <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* =========================
+       Base Resets & Variables
+       ========================= */
     * {
       margin: 0;
       padding: 0;
@@ -34,7 +40,9 @@
       background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ff9bb6' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
     }
 
-    /* Loading Screen */
+    /* =========================
+       Loading Screen
+       ========================= */
     .loading-screen {
       position: fixed;
       top: 0;
@@ -48,11 +56,6 @@
       align-items: center;
       z-index: 9999;
       transition: opacity 0.5s;
-    }
-    /* prevent invisible loader from blocking clicks */
-    .loading-screen.hidden {
-      opacity: 0 !important;
-      pointer-events: none !important;
     }
 
     .loading-heart {
@@ -69,7 +72,9 @@
       font-family: 'Dancing Script', cursive;
     }
 
-    /* Sparkle Container */
+    /* =========================
+       Sparkles (click-through)
+       ========================= */
     #sparkle-container {
       position: fixed;
       top: 0;
@@ -89,6 +94,7 @@
       box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
       opacity: 0;
       animation: sparkleFloat 8s linear infinite;
+      pointer-events: none;
     }
 
     @keyframes sparkleFloat {
@@ -108,7 +114,9 @@
       }
     }
 
-    /* Navigation */
+    /* =========================
+       Navigation
+       ========================= */
     nav {
       position: fixed;
       top: 0;
@@ -131,10 +139,10 @@
 
     .logo {
       font-size: 1.8rem;
-      font-weight: bold;
+      font-weight: 700;
       color: var(--primary-color);
       font-family: 'Dancing Script', cursive;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
     .nav-links {
@@ -170,7 +178,9 @@
       color: var(--primary-color);
     }
 
-    /* Hero Section */
+    /* =========================
+       Hero Section
+       ========================= */
     .hero {
       height: 100vh;
       display: flex;
@@ -196,8 +206,12 @@
     }
 
     @keyframes floatHearts {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-100px); }
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-100px);
+      }
     }
 
     .hero h1 {
@@ -252,17 +266,22 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
-    /* Floating Animation */
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .floating {
       animation: float 3s ease-in-out infinite;
     }
 
-    /* Sections */
+    /* =========================
+       Shared Section Styles
+       ========================= */
     section {
       padding: 5rem 2rem;
       max-width: 1200px;
@@ -275,6 +294,8 @@
       border-radius: 20px;
       margin-bottom: 2rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(6px);
     }
 
     .section-visible {
@@ -291,7 +312,9 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    /* About Holly Section */
+    /* =========================
+       About Holly
+       ========================= */
     .about-holly {
       background-color: var(--pastel-yellow);
       border: 2px dashed var(--accent-color);
@@ -340,61 +363,58 @@
     }
 
     .holly-card li:before {
-      content: "❤";
+      content: '❤';
       position: absolute;
       left: 0;
       color: var(--primary-color);
     }
 
-    /* Gallery */
+    /* =========================
+   Gallery (masonry, no gaps)
+   ========================= */
     .gallery {
       background-color: var(--pastel-lavender);
       border: 2px dashed var(--secondary-color);
     }
 
+    /* Column masonry container */
     .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-auto-rows: 200px;
-      grid-gap: 1.5rem;
-      grid-auto-flow: dense;
+      column-count: 4;          /* desktop */
+      column-gap: 1.5rem;
     }
 
-    .gallery-item:nth-child(3n) {
-      grid-row: span 2;
-    }
+    /* Responsive column counts */
+    @media (max-width: 1200px) { .gallery-container { column-count: 3; } }
+    @media (max-width: 768px)  { .gallery-container { column-count: 2; } }
 
-    .gallery-item:nth-child(5n) {
-      grid-column: span 2;
-    }
-
+    /* Each item flows into the columns; avoid breaks */
     .gallery-item {
+      display: inline-block;    /* key for column layout */
+      width: 100%;
+      margin: 0 0 1.5rem;       /* vertical spacing between items */
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      height: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform .3s;
       position: relative;
       cursor: pointer;
-      border: 3px solid white;
+      border: 3px solid #fff;
+      break-inside: avoid;      /* keep whole cards together */
     }
 
-    .gallery-item:hover {
-      transform: translateY(-5px);
-    }
+    .gallery-item:hover { transform: translateY(-5px); }
 
     .gallery-item img {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
+      height: auto;             /* keep natural aspect ratio */
+      transition: transform .5s;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Music Section */
+    .gallery-item:hover img { transform: scale(1.05); }
+    /* =========================
+       Music Section
+       ========================= */
     .music-section {
       background-color: var(--pastel-mint);
       border: 2px dashed #a8d8d8;
@@ -406,7 +426,31 @@
       align-items: center;
       gap: 2rem;
     }
+    /* === Fix: Music section button click area overlap === */
+    .album-player {
+      isolation: isolate;            /* create a local stacking context */
+    }
 
+    .album-player::after {
+      pointer-events: none;          /* decorative sweep shouldn't catch clicks */
+    }
+
+    .spotify-player {
+      position: relative;
+      z-index: 1;                    /* keep iframe below button */
+      display: block;
+    }
+
+    /* ensure the Reveal button sits on top of siblings */
+    .reveal-btn {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* optional: album hover overlay should not intercept clicks outside the cover */
+    .play-overlay {
+      pointer-events: none;
+    }
     .album-player {
       display: flex;
       flex-direction: column;
@@ -414,7 +458,7 @@
       gap: 1.5rem;
       max-width: 600px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(10px);
       border-radius: 20px;
       padding: 2rem;
@@ -538,7 +582,7 @@
       display: none;
       margin-top: 1.5rem;
       padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 15px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
       animation: fadeIn 1s;
@@ -547,11 +591,19 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Timeline */
+    /* =========================
+       Timeline
+       ========================= */
     .timeline-section {
       background-color: #fff0f5;
       border: 2px dashed #ffc6d9;
@@ -629,13 +681,15 @@
     }
 
     .timeline-date {
-      font-weight: bold;
+      font-weight: 700;
       color: var(--primary-color);
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
     }
 
-    /* Relationship Timer Section */
+    /* =========================
+       Relationship Timer
+       ========================= */
     .timer-section {
       background: linear-gradient(135deg, #ffd1dc 0%, #ffd6a5 100%);
       text-align: center;
@@ -693,7 +747,7 @@
 
     .timer-value {
       font-size: 3rem;
-      font-weight: bold;
+      font-weight: 700;
       color: var(--primary-color);
       line-height: 1;
       margin-bottom: 0.5rem;
@@ -727,7 +781,9 @@
       100% { transform: scale(1); }
     }
 
-    /* Flower Garden Section */
+    /* =========================
+       Flower Garden
+       ========================= */
     .flower-garden {
       background-color: #e8f5e9;
       text-align: center;
@@ -751,7 +807,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("assets/images/garden/6cdb19e4-4762-41ce-a574-6317d2d1e7f6.jpg");
+      background-image: url("/Users/sehej/IdeaProjects/Hollys-birthdayReal/assets/images/garden/6cdb19e4-4762-41ce-a574-6317d2d1e7f6.jpg");
       z-index: 1;
     }
 
@@ -782,18 +838,6 @@
       color: #333;
       font-weight: 500;
       line-height: 1.3;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-20px) rotate(5deg);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
     }
 
     .garden-btn {
@@ -829,10 +873,12 @@
 
     .garden-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
-    /* Secret Section */
+    /* =========================
+       Secret Section / Envelope
+       ========================= */
     .secret-section {
       background: linear-gradient(135deg, #ffd1dc 0%, #c5e3ff 100%);
       text-align: center;
@@ -850,6 +896,8 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.5s ease;
       border: 1px solid rgba(255,255,255,0.5);
+      position: relative;
+      z-index: 20;
     }
 
     .secret-container:hover {
@@ -866,6 +914,8 @@
       font-size: 1.1rem;
       text-align: center;
       transition: border-color 0.3s;
+      position: relative;
+      z-index: 21;
     }
 
     .passcode-input:focus {
@@ -886,6 +936,7 @@
       position: relative;
       overflow: hidden;
       font-weight: 600;
+      z-index: 21;
     }
 
     .submit-btn::before {
@@ -907,19 +958,19 @@
       background-color: #ff7aa2;
     }
 
-    /* ==== Envelope Reveal Styles ==== */
     .envelope-wrapper {
       display: flex;
       justify-content: center;
       margin: 2rem 0 0;
+      position: relative;
+      z-index: 19;
     }
 
     .envelope {
-      --env-shell: #ffd1dc;   /* flap */
-      --env-front: #ffb6c1;   /* body */
-      --paper-bg: #ffffff;    /* letter */
+      --env-shell: #ffd1dc;
+      --env-front: #ffb6c1;
+      --paper-bg: #ffffff;
       --paper-ink: #333;
-
       position: relative;
       width: 600px;
       max-width: 92vw;
@@ -943,7 +994,9 @@
 
     .envelope .flap {
       position: absolute;
-      left: 0; right: 0; top: 0;
+      left: 0;
+      right: 0;
+      top: 0;
       height: 60%;
       background: var(--env-shell);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -974,29 +1027,23 @@
     }
 
     .letter.show {
-      transform: translate(-50%, -88%); /* rises out */
+      transform: translate(-50%, -88%);
       opacity: 1;
     }
 
-    /* === Long-page (non-freezing) reveal === */
-    .letter.longpage{
+    .letter.longpage {
       position: static;
-      left: auto; bottom: auto;
+      left: auto;
+      bottom: auto;
       transform: none !important;
       opacity: 1;
-
-      /* keep it exactly as wide as the container */
       width: 100%;
       max-width: 800px;
       margin: 2rem auto;
-
       background: #ffffff;
       box-shadow: 0 15px 40px rgba(0,0,0,.12);
       border-radius: 15px;
     }
-
-    /* let content extend beyond the envelope */
-    .secret-section { overflow: visible; }
 
     .letter-inner p {
       margin: 0 0 1.1rem 0;
@@ -1004,7 +1051,6 @@
       font-size: 1.05rem;
     }
 
-    /* ===== Fullscreen Letter and Backdrop ===== */
     .letter-backdrop {
       position: fixed;
       inset: 0;
@@ -1014,6 +1060,7 @@
       transition: opacity 0.3s ease;
       z-index: 999;
     }
+
     .letter-backdrop.show {
       opacity: 1;
       pointer-events: auto;
@@ -1034,7 +1081,9 @@
       overflow: hidden;
     }
 
-    /* Footer */
+    /* =========================
+       Footer
+       ========================= */
     footer {
       background-color: var(--dark-color);
       color: white;
@@ -1055,7 +1104,9 @@
       100% { transform: scale(1); }
     }
 
-    /* Custom Scrollbar */
+    /* =========================
+       Custom Scrollbar
+       ========================= */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -1073,7 +1124,9 @@
       background: linear-gradient(var(--secondary-color), var(--primary-color));
     }
 
-    /* Lightbox Styles */
+    /* =========================
+       Lightbox
+       ========================= */
     .lightbox {
       position: fixed;
       top: 0;
@@ -1096,7 +1149,9 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.1);
     }
 
-    /* Responsive */
+    /* =========================
+       Responsive
+       ========================= */
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2.5rem;
@@ -1123,10 +1178,6 @@
 
       .nav-links {
         display: none;
-      }
-
-      .mobile-menu {
-        display: block;
       }
 
       .album-cover {
@@ -1174,17 +1225,24 @@
     }
   </style>
 </head>
+
 <body>
-<!-- Loading Screen -->
-<div class="loading-screen">
+<!-- =========================
+     Loading Screen
+     ========================= -->
+<div class="loading-screen" id="loading-screen">
   <div class="loading-heart">❤️</div>
   <div class="loading-text">Loading your special birthday surprise...</div>
 </div>
 
-<!-- Sparkle Container -->
+<!-- =========================
+     Sparkle Container
+     ========================= -->
 <div id="sparkle-container"></div>
 
-<!-- Navigation -->
+<!-- =========================
+     Navigation
+     ========================= -->
 <nav>
   <div class="nav-container">
     <div class="logo">For My Holly</div>
@@ -1200,14 +1258,18 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- =========================
+     Hero
+     ========================= -->
 <section class="hero">
   <h1>Happy Birthday, My Beautiful Holly!</h1>
   <p>To the most amazing girl in the world - may your day be as special as you are to me.</p>
-  <button class="hero-btn floating">Discover Your Surprise</button>
+  <button class="hero-btn floating" id="hero-btn">Discover Your Surprise</button>
 </section>
 
-<!-- About Holly Section -->
+<!-- =========================
+     About Holly
+     ========================= -->
 <section id="about" class="about-holly">
   <h2 class="section-title">All About Holly</h2>
   <div class="holly-container">
@@ -1254,7 +1316,9 @@
   </div>
 </section>
 
-<!-- Gallery Section -->
+<!-- =========================
+     Gallery
+     ========================= -->
 <section id="gallery" class="gallery">
   <h2 class="section-title">Our Beautiful Memories</h2>
   <div class="gallery-container">
@@ -1271,13 +1335,13 @@
       <img src="assets/images/gallery/IMG_0317.JPG" alt="Memory 4">
     </div>
     <div class="gallery-item">
-      <img src="assets/images/gallery/IMG_3102.JPG" alt="Memory 5">
+      <img src="assets/images/gallery/mem5.png" alt="Memory 5">
     </div>
     <div class="gallery-item">
       <img src="assets/images/gallery/IMG_3294.jpg" alt="Memory 6">
     </div>
     <div class="gallery-item">
-      <img src="assets/images/gallery/IMG_1106.jpeg" alt="Memory 7">
+      <img src="assets/images/gallery/mem%207.png" alt="Memory 7">
     </div>
     <div class="gallery-item">
       <img src="assets/images/gallery/IMG_3536.JPG" alt="Memory 8">
@@ -1294,10 +1358,27 @@
     <div class="gallery-item">
       <img src="assets/images/gallery/IMG_9437.JPG" alt="Memory 12">
     </div>
+    <div class="gallery-item">
+      <img src="assets/images/gallery/IMG_0269.JPEG" alt="Memory 13">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/images/gallery/IMG_3752.jpeg" alt="Memory 14">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/images/gallery/IMG_0061.jpg" alt="Memory 15">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/images/gallery/IMG_6073.JPG" alt="Memory 16">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/images/gallery/IMG_3981.jpg" alt="Memory 17">
+    </div>
   </div>
 </section>
 
-<!-- Music Section -->
+<!-- =========================
+     Music
+     ========================= -->
 <section id="music" class="music-section">
   <h2 class="section-title">Our Song</h2>
   <div class="music-container">
@@ -1312,7 +1393,7 @@
         </div>
       </div>
 
-      <iframe class="spotify-player" src="https://open.spotify.com/embed/track/0FTmksd2dxiE5e3rWyJXs6?utm_source=generator" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe class="spotify-player" src="https://open.spotify.com/embed/track/0FTmksd2dxiE5e3rWyJXs6?utm_source=generator" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
       <button class="reveal-btn" id="reveal-btn">Wait... this isn't right. Click to reveal our real song!</button>
 
@@ -1327,20 +1408,22 @@
           </div>
         </div>
 
-        <iframe class="spotify-player" src="https://open.spotify.com/embed/track/1RMJOxR6GRPsBHL8qeC2ux?utm_source=generator" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe class="spotify-player" src="https://open.spotify.com/embed/track/1RMJOxR6GRPsBHL8qeC2ux?utm_source=generator" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Timeline Section -->
+<!-- =========================
+     Timeline
+     ========================= -->
 <section id="timeline" class="timeline-section">
   <h2 class="section-title">Our Journey</h2>
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-date">June 27th, 2025</div>
-        <p>We first met in Korea, Outside Diaso after dinner.</p>
+        <p>We first met in Korea, Outside Daiso after dinner.</p>
       </div>
     </div>
     <div class="timeline-item">
@@ -1358,13 +1441,13 @@
     <div class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-date">July 19-20th, 2025</div>
-        <p>Our days together in Busan, remember what we did haha?.</p>
+        <p>Our days together in Busan, remember what we did haha?</p>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-date">July 23rd, 2025</div>
-        <p>The day we officially became a couple. Im so glad I chose Korea for study abroad and not Singapore.</p>
+        <p>The day we officially became a couple. I'm so glad I chose Korea for study abroad and not Singapore.</p>
       </div>
     </div>
     <div class="timeline-item">
@@ -1382,13 +1465,15 @@
     <div class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-date">Future</div>
-        <p>Can't wait to have the best time in Canada together</p>
+        <p>Can't wait to have the best time in Canada together.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Relationship Timer Section -->
+<!-- =========================
+     Relationship Timer
+     ========================= -->
 <section id="timer" class="timer-section">
   <h2 class="section-title">Our Time Together</h2>
   <div class="timer-container">
@@ -1426,24 +1511,25 @@
       Every second with you is a blessing. I cherish our time together and look forward to creating many more beautiful memories with you.
     </div>
 
-    <div class="timer-hearts">
-      ❤️ ❤️ ❤️
-    </div>
+    <div class="timer-hearts">❤️ ❤️ ❤️</div>
   </div>
 </section>
 
-<!-- Flower Garden Section -->
+<!-- =========================
+     Flower Garden
+     ========================= -->
 <section id="garden" class="flower-garden">
   <h2 class="section-title">Holly's Hydrangea Garden</h2>
   <p>Your favorite flowers with all the things I love about you</p>
   <div class="garden-container" id="garden-container">
     <div class="garden-background"></div>
-    <!-- Bubbles will be generated here with JavaScript -->
   </div>
   <button class="garden-btn" id="refresh-bubbles">Refresh Bubbles</button>
 </section>
 
-<!-- Secret Section -->
+<!-- =========================
+     Secret Section
+     ========================= -->
 <section id="secret" class="secret-section">
   <h2 class="section-title">Secret Message</h2>
   <div class="secret-container">
@@ -1451,29 +1537,27 @@
     <p><small>(Hint: Where did we first meet?)</small></p>
     <input type="text" class="passcode-input" placeholder="Enter passcode" id="passcode">
     <button class="submit-btn" id="submit-code">Reveal Message</button>
+
     <div class="envelope-wrapper">
       <div class="envelope" id="envelope">
         <div class="envelope-body">
           <div class="front"></div>
           <div class="flap"></div>
         </div>
-
         <div class="letter" id="letter">
           <div class="letter-inner">
-            <p><strong>Happy Birthday Holly!</strong></p>
+            <p>I miss you so much. It’s hard to put into words what you mean to me, but you are literally my favorite person on this planet... even though you are literally on the other side of the world lol. Today is literally one of, if not the best day, because it’s when you started existing, it’s actually the second best day, the first is when I met you and we started to fall in love.</p>
 
-            <p>I miss you so much. It's hard to put into words what you mean to me, but you are literally my favorite person on this planet... even though you are literally on the other side of the world lol. Today is literally one of, if not the best day, because it's when you started existing, it's actually the second best day, the first is when I met you and we started to fall in love.</p>
+            <p>You are my everything. I don’t know what I did to deserve you, but I’m glad I get to call you mine. Thank you for loving me, baby. I love it whenever a notification pops up on my phone and your name is in it, I don’t know where I’d be without all your support and love. Korea was 10x better because I got to spend it with u. From our days with just the 2 of us to the Airbnb to Busan and to hanging out with the whole group, I wouldn’t have wanted to spend more time with anything else. Korea was absolutely perfect, and that’s all because of you.</p>
 
-            <p>You are my everything. I don't know what I did to deserve you, but I'm glad I get to call you mine. Thank you for loving me, baby. I love it whenever a notification pops up on my phone and your name is in it, I don't know where I'd be without all your support and love. Korea was 10x better because I got to spend it with u. From our days with just the 2 of us to the Airbnb to Busan and to hanging out with the whole group, I wouldn't have wanted to spend more time with anything else. Korea was absolutely perfect, and that's all because of you.</p>
+            <p>I love you for so many reasons. I love you because you are such a kind, gentle, sweet, and caring person. You made sure every day that I was ok when I was sick in Korea, and got me a thermometer lol. I love your jokes and your humor, and I love how much time and effort in into our relationship. I love how hardworking you are and how you are working so hard to come to Canada just to see me. I really hope you can study abroad in Canada, so we have a semi-long-distance relationship, so I can see you every weekend and spend all of my time with you. I loved watching the TSITP with you, and now all the other TV shows we are watching together. I love being on RAVE and pausing every 5 minutes to yap with you. I love our relationship, and I can’t wait till it’s permanently in person. I want you forever and ever, and I can’t imagine losing you.</p>
 
-            <p>I love you for so many reasons. I love you because you are such a kind, gentle, sweet, and caring person. You made sure every day that I was ok when I was sick in Korea, and got me a thermometer lol. I love your jokes and your humor, and I love how much time and effort in into our relationship. I love how hardworking you are and how you are working so hard to come to Canada just to see me. I really hope you can study abroad in Canada, so we have a semi-long-distance relationship, so I can see you every weekend and spend all of my time with you. I loved watching the TSITP with you, and now all the other TV shows we are watching together. I love being on RAVE and pausing every 5 minutes to yap with you. I love our relationship, and I can't wait till it's permanently in person. I want you forever and ever, and I can't imagine losing you.</p>
+            <p>You make my heart happy, and I love every second I spend with you, except the times we fight, but even with that, I’m glad we are growing together. I can’t imagine life without you. I just know we are going to have so much fun in Canada, wink wink, haha. NO RENAGADES, ok? lol.</p>
 
-            <p>You make my heart happy, and I love every second I spend with you, except the times we fight, but even with that, I'm glad we are growing together. I can't imagine life without you. I just know we are going to have so much fun in Canada, wink wink, haha. NO RENEGADES, ok? lol.</p>
-
-            <p>I've become so attached to you, I'm literally terrified of losing you one day. I've never felt like this for anyone, and I don't see myself with anybody else but you. You are my person, Holly. Ur literally perfect. I love everything about you. You're the perfect girl for me, and I love you to the moon and back. I don't care that people say that couples in LD don't last; I just know we will. I'm ur boyfriend, your biggest supporter, your best friend, you are my one and only forever. Everything's gonna be ok, cause I'm here for u every step of the way.</p>
+            <p>I’ve become so attached to you, I'm literally terrified of losing you one day. I’ve never felt like this for anyone, and I don't see myself with anybody else but you. You are my person, Holly. Ur literally perfect. I love everything about you. You’re the perfect girl for me, and I love you to the moon and back. I don’t care that people say that couples in LD don’t last; I just know we will. I’m ur boyfriend, your biggest supporter, your best friend, you are my one and only forever. Everything’s gonna be ok, cause I’m here for u every step of the way.</p>
 
             <p>I hope you enjoy your birthday, just know I love you so much and I will never stop loving you!</p>
-
+          </div>
             <p>Forever yours,<br>Sehej</p>
           </div>
         </div>
@@ -1481,94 +1565,78 @@
     </div>
   </div>
 </section>
+
 <div class="letter-backdrop" id="letter-backdrop"></div>
 
-<!-- Footer -->
+<!-- =========================
+     Footer
+     ========================= -->
 <footer>
   <p>Made with <span class="heart">❤</span> for the most wonderful Holly Grace Waddell</p>
   <p>Happy 19th Birthday, my love!</p>
 </footer>
 
+<!-- =========================
+     Scripts
+     ========================= -->
 <script>
-  // Loading Screen
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      document.querySelector('.loading-screen').style.opacity = '0';
-      setTimeout(function() {
-        document.querySelector('.loading-screen').style.display = 'none';
+  /* -------------------------
+     Loading Screen Fade-Out
+     ------------------------- */
+  window.addEventListener('load', function () {
+    const loader = document.getElementById('loading-screen');
+    setTimeout(function () {
+      loader.style.opacity = '0';
+      setTimeout(function () {
+        loader.style.display = 'none';
       }, 500);
-    }, 2000);
+    }, 1200);
   });
 
-  // Sparkle Animation
+  /* -------------------------
+     Sparkle Animation
+     ------------------------- */
   function createSparkles() {
     const container = document.getElementById('sparkle-container');
     const sparkleCount = 50;
-
     for (let i = 0; i < sparkleCount; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-
-      // Random position
-      const left = Math.random() * 100;
-      sparkle.style.left = `${left}%`;
-
-      // Random delay
-      const delay = Math.random() * 15;
-      sparkle.style.animationDelay = `${delay}s`;
-
-      // Random size
+      const s = document.createElement('div');
+      s.classList.add('sparkle');
+      s.style.left = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 15 + 's';
       const size = Math.random() * 4 + 2;
-      sparkle.style.width = `${size}px`;
-      sparkle.style.height = `${size}px`;
-
-      // Random color (mostly white with some pink/purple)
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
       const colors = ['#ffffff', '#ffb6c1', '#e0c3fc', '#ffffff', '#ffffff'];
       const color = colors[Math.floor(Math.random() * colors.length)];
-      sparkle.style.backgroundColor = color;
-      sparkle.style.boxShadow = `0 0 10px 2px ${color}`;
-
-      container.appendChild(sparkle);
+      s.style.backgroundColor = color;
+      s.style.boxShadow = '0 0 10px 2px ' + color;
+      container.appendChild(s);
     }
   }
 
-  // Relationship Timer
+  /* -------------------------
+     Relationship Timer
+     ------------------------- */
   function updateTimer() {
     const startDate = new Date('July 23, 2025 00:00:00').getTime();
     const now = new Date().getTime();
 
-    // If the start date is in the future, show a waiting message
     if (now < startDate) {
-      document.getElementById('years').textContent = '0';
-      document.getElementById('months').textContent = '0';
-      document.getElementById('days').textContent = '0';
-      document.getElementById('hours').textContent = '0';
-      document.getElementById('minutes').textContent = '0';
-      document.getElementById('seconds').textContent = '0';
+      ['years','months','days','hours','minutes','seconds'].forEach(id => {
+        document.getElementById(id).textContent = '0';
+      });
       return;
     }
 
-    const timeDifference = now - startDate;
+    const diff = now - startDate;
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+    const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Calculate years
-    const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
-
-    // Calculate months
-    const months = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
-
-    // Calculate days
-    const days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
-
-    // Calculate hours
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    // Calculate minutes
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
-    // Calculate seconds
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-    // Update the display
     document.getElementById('years').textContent = years;
     document.getElementById('months').textContent = months;
     document.getElementById('days').textContent = days;
@@ -1577,172 +1645,124 @@
     document.getElementById('seconds').textContent = seconds;
   }
 
-  // Enhanced Timer with Celebration
   function enhanceTimer() {
-    const timerUnits = document.querySelectorAll('.timer-unit');
-
+    const units = document.querySelectorAll('.timer-unit');
     setInterval(() => {
-      timerUnits.forEach(unit => {
-        unit.style.transform = 'scale(1.05)';
-        setTimeout(() => {
-          unit.style.transform = 'scale(1)';
-        }, 300);
+      units.forEach(u => {
+        u.style.transform = 'scale(1.05)';
+        setTimeout(() => { u.style.transform = 'scale(1)'; }, 300);
       });
     }, 5000);
   }
 
-  // Song Reveal Functionality
+  /* -------------------------
+     Music Player / Reveal
+     ------------------------- */
   const revealBtn = document.getElementById('reveal-btn');
   const realSong = document.getElementById('real-song');
   const musicPlayer = document.getElementById('music-player');
   const fakeAlbum = document.getElementById('fake-album');
   const realAlbum = document.getElementById('real-album');
 
-  revealBtn.addEventListener('click', function() {
+  revealBtn.addEventListener('click', function () {
     realSong.style.display = 'block';
     musicPlayer.classList.add('revealed');
     revealBtn.style.display = 'none';
-
-    // Stop the fake song
-    const fakeAlbumPlayIcon = fakeAlbum.querySelector('.play-icon');
-    fakeAlbumPlayIcon.classList.remove('fa-pause');
-    fakeAlbumPlayIcon.classList.add('fa-play');
-
-    // Start the real song
-    const realAlbumPlayIcon = realAlbum.querySelector('.play-icon');
-    realAlbumPlayIcon.classList.remove('fa-play');
-    realAlbumPlayIcon.classList.add('fa-pause');
-
-    // Create a simple confetti effect
+    const fakeIcon = fakeAlbum.querySelector('.play-icon');
+    if (fakeIcon) { fakeIcon.classList.remove('fa-pause'); fakeIcon.classList.add('fa-play'); }
+    const realIcon = realAlbum.querySelector('.play-icon');
+    if (realIcon) { realIcon.classList.remove('fa-play'); realIcon.classList.add('fa-pause'); }
     createConfetti();
   });
 
-  // Enhanced Music Player Interaction
   function enhanceMusicPlayer() {
-    const fakeAlbum = document.getElementById('fake-album');
-    const realAlbum = document.getElementById('real-album');
-
     [fakeAlbum, realAlbum].forEach(album => {
-      album.addEventListener('mouseenter', function() {
+      album.addEventListener('mouseenter', function () {
         this.style.transform = 'scale(1.05) rotate(2deg)';
       });
-
-      album.addEventListener('mouseleave', function() {
+      album.addEventListener('mouseleave', function () {
         this.style.transform = 'scale(1) rotate(0deg)';
+      });
+      album.addEventListener('click', function () {
+        const icon = this.querySelector('.play-icon');
+        if (!icon) { return; }
+        if (icon.classList.contains('fa-play')) {
+          icon.classList.remove('fa-play');
+          icon.classList.add('fa-pause');
+        } else {
+          icon.classList.remove('fa-pause');
+          icon.classList.add('fa-play');
+        }
       });
     });
   }
 
-  // Album Cover Click Functionality
-  fakeAlbum.addEventListener('click', function() {
-    const albumIcon = fakeAlbum.querySelector('.play-icon');
-
-    if (albumIcon.classList.contains('fa-play')) {
-      albumIcon.classList.remove('fa-play');
-      albumIcon.classList.add('fa-pause');
-    } else {
-      albumIcon.classList.remove('fa-pause');
-      albumIcon.classList.add('fa-play');
-    }
-  });
-
-  realAlbum.addEventListener('click', function() {
-    const albumIcon = realAlbum.querySelector('.play-icon');
-
-    if (albumIcon.classList.contains('fa-play')) {
-      albumIcon.classList.remove('fa-play');
-      albumIcon.classList.add('fa-pause');
-    } else {
-      albumIcon.classList.remove('fa-pause');
-      albumIcon.classList.add('fa-play');
-    }
-  });
-
-  // Compliments about Holly
+  /* -------------------------
+     Compliments + Bubbles
+     ------------------------- */
   const compliments = [
-    "Your pretty smile",
-    "The way you constantly compliment me",
-    "Your gorgeous blue eyes",
-    "10/10 collarbone",
-    "9/10 nostrils",
-    "Your love for Harold",
-    "Your taste in music",
-    "The way you write about me",
-    "your giggles",
-    "How we share the same goals",
-    "How smart you are",
-    "Your kindness to everyone",
-    "The way you kiss me",
-    "How you always want to hold my hand",
-    "Your Instagram reels",
-    "How you want to travel with me",
-    "How driven you are",
-    "BACKSHOTS",
-    "Your beautiful curly hair",
-    "How you wear my hoodies",
-    "Your love for romantic shows",
-    "How you love writing letters for me",
-    "Your dedication to the relationship",
-    "Good Morning texts",
-    "How you are flying across the world for me ",
-    "How you love your friends",
-    "Your love for cuddles",
-    "Your adventurous spirit",
-    "Your love for hiking",
-    "How you always make time for me"
+    'Your pretty smile',
+    'The way you constantly compliment me',
+    'Your gorgeous blue eyes',
+    '10/10 collarbone',
+    '9/10 nostrils',
+    'Your love for Harold',
+    'Your taste in music',
+    'The way you write about me',
+    'Your giggles',
+    'How we share the same goals',
+    'How smart you are',
+    'Your kindness to everyone',
+    'The way you kiss me',
+    'How you always want to hold my hand',
+    'Your Instagram reels',
+    'How you want to travel with me',
+    'How driven you are',
+    'Your beautiful curly hair',
+    'How you wear my hoodies',
+    'Your love for romantic shows',
+    'How you love writing letters for me',
+    'Your dedication to the relationship',
+    'Good Morning texts',
+    'How you are flying across the world for me',
+    'How you love your friends',
+    'Your love for cuddles',
+    'Your adventurous spirit',
+    'Your love for hiking',
+    'How you always make time for me'
   ];
 
-  // Create bubbles with compliments
   function createBubbles() {
     const gardenContainer = document.getElementById('garden-container');
-
-    // Clear existing bubbles
-    const existingBubbles = document.querySelectorAll('.bubble');
-    existingBubbles.forEach(bubble => bubble.remove());
-
-    // Create 10-15 bubbles
-    const bubbleCount = Math.floor(Math.random() * 6) + 15; // 10-15 bubbles
-
-    for (let i = 0; i < bubbleCount; i++) {
+    const existing = document.querySelectorAll('.bubble');
+    existing.forEach(b => b.remove());
+    const count = Math.floor(Math.random() * 6) + 15;
+    for (let i = 0; i < count; i++) {
       const bubble = document.createElement('div');
       bubble.classList.add('bubble');
-
-      // Random position
-      const left = Math.random() * 80 + 10; // 10% to 90%
-      const top = Math.random() * 70 + 15; // 15% to 85%
-
-      bubble.style.left = `${left}%`;
-      bubble.style.top = `${top}%`;
-
-      // Random size
-      const size = Math.random() * 70 + 90; // 70px to 150px
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-
-      // Random animation delay and duration
-      const delay = Math.random() * 5;
-      const duration = Math.random() * 5 + 8; // 8-13 seconds
-      bubble.style.animationDelay = `${delay}s`;
-      bubble.style.animationDuration = `${duration}s`;
-
-      // Random compliment
-      const randomIndex = Math.floor(Math.random() * compliments.length);
-      const compliment = compliments[randomIndex];
-
+      const left = Math.random() * 80 + 10;
+      const top = Math.random() * 70 + 15;
+      bubble.style.left = left + '%';
+      bubble.style.top = top + '%';
+      const size = Math.random() * 70 + 90;
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      bubble.style.animationDelay = (Math.random() * 5) + 's';
+      bubble.style.animationDuration = (Math.random() * 5 + 8) + 's';
+      const idx = Math.floor(Math.random() * compliments.length);
       const content = document.createElement('div');
       content.classList.add('bubble-content');
-      content.innerHTML = `<span class="heart">❤</span> ${compliment}`;
-
+      content.innerHTML = '<span class="heart">❤</span> ' + compliments[idx];
       bubble.appendChild(content);
       gardenContainer.appendChild(bubble);
     }
   }
 
-  // Refresh bubbles button
-  const refreshBtn = document.getElementById('refresh-bubbles');
-  refreshBtn.addEventListener('click', createBubbles);
+  document.getElementById('refresh-bubbles').addEventListener('click', createBubbles);
 
-  // Secret Passcode Functionality — envelope
+  /* -------------------------
+     Secret Passcode / Envelope
+     ------------------------- */
   const submitBtn = document.getElementById('submit-code');
   const envelope = document.getElementById('envelope');
   const letter = document.getElementById('letter');
@@ -1750,13 +1770,13 @@
   const backdrop = document.getElementById('letter-backdrop');
 
   submitBtn.addEventListener('click', function () {
-    const passcode = document.getElementById('passcode').value.toLowerCase();
+    const passcode = document.getElementById('passcode').value.trim().toLowerCase();
     if (passcode === 'daiso') {
       envelope.classList.add('open');
       setTimeout(() => {
-        // Move the letter OUT of the envelope so it becomes a normal block element
+        // Move letter out to prevent 3D context issues and allow full width
         envelopeWrapper.insertAdjacentElement('afterend', letter);
-        letter.classList.add('show', 'longpage'); // shows it as a long white section
+        letter.classList.add('show', 'longpage');
       }, 350);
       createConfetti();
     } else {
@@ -1764,14 +1784,12 @@
     }
   });
 
-  // Click backdrop to close the letter
   backdrop.addEventListener('click', () => {
     letter.classList.remove('show', 'fullscreen');
     backdrop.classList.remove('show');
     document.body.classList.remove('no-scroll');
   });
 
-  // Also close on ESC key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       letter.classList.remove('show', 'fullscreen');
@@ -1780,74 +1798,54 @@
     }
   });
 
-  // Hero Button Animation
-  document.querySelector('.hero-btn').addEventListener('click', function() {
-    this.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      this.style.transform = 'scale(1)';
-    }, 150);
-  });
-
-  // Simple confetti effect
+  /* -------------------------
+     Confetti
+     ------------------------- */
   function createConfetti() {
     const colors = ['#ff9bb6', '#c5a8ff', '#ffd166', '#4caf50', '#2196f3'];
     const container = document.querySelector('.secret-container');
-
     for (let i = 0; i < 50; i++) {
-      const confetti = document.createElement('div');
-      confetti.style.position = 'absolute';
-      confetti.style.width = '10px';
-      confetti.style.height = '10px';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.borderRadius = '50%';
-      confetti.style.left = Math.random() * 100 + '%';
-      confetti.style.top = '-20px';
-      confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
-
-      container.appendChild(confetti);
-
-      // Remove confetti after animation
-      setTimeout(() => {
-        confetti.remove();
-      }, 5000);
+      const c = document.createElement('div');
+      c.style.position = 'absolute';
+      c.style.width = '10px';
+      c.style.height = '10px';
+      c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      c.style.borderRadius = '50%';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.top = '-20px';
+      c.style.animation = 'fall ' + (Math.random() * 3 + 2) + 's linear forwards';
+      container.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
     }
-
-    // Add the fall animation
     const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fall {
-        to {
-          transform: translateY(500px) rotate(${Math.random() * 360}deg);
-          opacity: 0;
-        }
-      }
-    `;
+    style.textContent = '@keyframes fall { to { transform: translateY(500px) rotate(' + (Math.random() * 360) + 'deg); opacity: 0; } }';
     document.head.appendChild(style);
   }
 
-  // Enhanced Gallery Lightbox
+  /* -------------------------
+     Gallery Lightbox
+     ------------------------- */
   function initGalleryLightbox() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach(item => {
-      item.addEventListener('click', function() {
-        const imgSrc = this.querySelector('img').src;
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-
+    const items = document.querySelectorAll('.gallery-item');
+    items.forEach(item => {
+      item.addEventListener('click', function () {
+        const src = this.querySelector('img').src;
+        const lb = document.createElement('div');
+        lb.className = 'lightbox';
         const img = document.createElement('img');
-        img.src = imgSrc;
-
-        lightbox.appendChild(img);
-        document.body.appendChild(lightbox);
-
-        lightbox.addEventListener('click', function() {
-          document.body.removeChild(lightbox);
+        img.src = src;
+        lb.appendChild(img);
+        document.body.appendChild(lb);
+        lb.addEventListener('click', function () {
+          document.body.removeChild(lb);
         });
       });
     });
   }
 
-  // Scroll Animations
+  /* -------------------------
+     Scroll Animations
+     ------------------------- */
   function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1856,36 +1854,43 @@
         }
       });
     }, { threshold: 0.1 });
-
-    // Observe all sections for animation
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
   }
 
-  // Smooth scrolling for navigation links
+  /* -------------------------
+     Smooth Scroll for Nav
+     ------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
-  // Initialize everything when page loads
-  window.addEventListener('load', function() {
+  /* -------------------------
+     Hero Button Micro-anim
+     ------------------------- */
+  document.getElementById('hero-btn').addEventListener('click', function () {
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => { this.style.transform = 'scale(1)'; }, 150);
+  });
+
+  /* -------------------------
+     Init on Load
+     ------------------------- */
+  window.addEventListener('load', function () {
     createSparkles();
     createBubbles();
-    updateTimer(); // Initialize the timer
-    setInterval(updateTimer, 1000); // Update the timer every second
+    updateTimer();
+    setInterval(updateTimer, 1000);
     enhanceTimer();
     enhanceMusicPlayer();
     initGalleryLightbox();
     initScrollAnimations();
-
-    // Add floating class to hero button
-    document.querySelector('.hero-btn').classList.add('floating');
+    document.getElementById('hero-btn').classList.add('floating');
   });
 </script>
 </body>
