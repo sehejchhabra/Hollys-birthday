@@ -1018,6 +1018,55 @@
     .envelope.open .flap {
       transform: rotateX(180deg);
     }
+    /* Stack order so the seal sits on top of flap */
+    .envelope .front { z-index: 1; }
+    .envelope .flap  { z-index: 2; }
+
+    /* ❤️ circular wax stamp that sits on the flap tip */
+    .seal-heart{
+      position:absolute;
+      top:55%;                   /* near the flap point */
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #ff6f91, #ff4d6d);
+      box-shadow:
+              0 4px 10px rgba(0,0,0,.18),
+              inset 0 2px 4px rgba(255,255,255,.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:18px;
+      line-height:1;
+      pointer-events:none;       /* don’t block clicks */
+      z-index:3;                 /* above flap */
+      transition: transform .45s ease, opacity .35s ease;
+      will-change: transform, opacity;
+    }
+
+    /* heart glyph (uses your Font Awesome link) */
+    .seal-heart::before{
+      content:"\f004";
+      font-family:"Font Awesome 6 Free";
+      font-weight:900;
+    }
+
+    /* gentle idle pulse so it feels alive */
+    @keyframes heartPulse{
+      0%,100%{ transform: translate(-50%,-50%) scale(1); }
+      50%    { transform: translate(-50%,-50%) scale(1.08); }
+    }
+    .seal-heart{ animation: heartPulse 2.4s ease-in-out infinite; }
+
+    /* when opening, the seal “breaks” and fades away */
+    .envelope.open .seal-heart{
+      transform: translate(-50%,-120%) scale(.6) rotate(-8deg);
+      opacity:0;
+      animation: none;
+    }
 
     .letter {
       position: absolute;
@@ -1551,6 +1600,8 @@
         <div class="envelope-body">
           <div class="front"></div>
           <div class="flap"></div>
+          <!-- ❤️ wax seal -->
+          <div class="seal-heart" aria-hidden="true"></div>
         </div>
         <div class="letter" id="letter">
           <div class="letter-inner">
