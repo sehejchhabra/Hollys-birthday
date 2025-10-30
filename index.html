@@ -372,47 +372,52 @@
     /* =========================
    Gallery (masonry, no gaps)
    ========================= */
+    /* ===== Gallery (masonry, no gaps) ===== */
     .gallery {
       background-color: var(--pastel-lavender);
       border: 2px dashed var(--secondary-color);
     }
 
-    /* Column masonry container */
+    /* Masonry columns */
     .gallery-container {
-      column-count: 4;          /* desktop */
+      column-count: 4;
       column-gap: 1.5rem;
     }
-
-    /* Responsive column counts */
     @media (max-width: 1200px) { .gallery-container { column-count: 3; } }
     @media (max-width: 768px)  { .gallery-container { column-count: 2; } }
 
-    /* Each item flows into the columns; avoid breaks */
+    /* Items flow into columns; prevent breaking */
     .gallery-item {
-      display: inline-block;    /* key for column layout */
-      width: 100%;
-      margin: 0 0 1.5rem;       /* vertical spacing between items */
+      display: block;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin: 0 0 1.5rem;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: transform .3s;
-      position: relative;
-      cursor: pointer;
       border: 3px solid #fff;
-      break-inside: avoid;      /* keep whole cards together */
-
+      position: relative;
+      transition: transform .25s ease;
+      cursor: pointer;
     }
 
-    .gallery-item:hover { transform: translateY(-5px); }
-
+    /* Images scale to width; keep natural height */
     .gallery-item img {
       display: block;
       width: 100%;
-      height: auto;             /* keep natural aspect ratio */
-      transition: transform .5s;
+      height: auto;           /* IMPORTANT: no fixed height in masonry */
+      object-fit: cover;
+      transform: translateZ(0); /* helps Safari paint */
+      transition: transform .35s ease;
     }
 
-    .gallery-item:hover img { transform: scale(1.05); }
+    /* Simple hover lift without causing reflow flicker */
+    .gallery-item:hover { transform: translateY(-4px); }
+    .gallery-item:hover img { transform: scale(1.03); }
+
+    /* Remove old grid-specific rules */
+    .gallery-item:nth-child(3n),
+    .gallery-item:nth-child(5n) { /* no-op now */ }
     /* =========================
        Music Section
        ========================= */
